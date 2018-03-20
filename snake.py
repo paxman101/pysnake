@@ -6,14 +6,12 @@ from body import Body
 # Initialize pygame
 pygame.init()
 
+# Initialize settings, screen, and snake body
 pys_settings = Settings()
-
 screen = pygame.display.set_mode(pys_settings.screen_size)
-
 body = Body(pys_settings, screen)
 
+# Main Game Loop
 while True:
-    gf.check_events()
+    gf.check_events(body)
     gf.update_screen(pys_settings, screen, body)
-
-
