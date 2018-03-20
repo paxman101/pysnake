@@ -1,20 +1,19 @@
 import pygame
-import sys
-import Settings from settings
+import game_functions as gf
+from settings import Settings
+from body import Body
+
+# Initialize pygame
 pygame.init()
 
-size = width, height = 400, 320
+pys_settings = Settings()
 
-screen = pygame.display.set_mode(size)
-speed = [2, 2]
-body = []
+screen = pygame.display.set_mode(pys_settings.screen_size)
 
-block_length = 20
-block = pygame.Rect((0, 0, block_length, block_length))
-print(type(block))
+body = Body(pys_settings, screen)
 
 while True:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            sys.exit()
-    pygame.display.flip()
+    gf.check_events()
+    gf.update_screen(pys_settings, screen, body)
+
+

@@ -1,6 +1,7 @@
-class Settings():
+class Settings:
     def __init__(self):
-        assert isinstance(screen_size, object)
         self.screen_size = self.screen_width, self.screen_height = (1280, 800)
+        self.background_color = (0, 0, 0)
         self.block_length = 20
-        self.speed = [2, 2]
+        self.snake_speed = [2, 2]
+        self.snake_color = (0, 255, 0)
