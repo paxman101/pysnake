@@ -7,3 +7,4 @@ class Settings:
         self.block_length = 40
         self.snake_speed = [self.block_length * 1, self.block_length * 1]
         self.snake_color = (255, 255, 255)
+        self.apple_color = (255, 0, 0)

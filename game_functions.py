@@ -23,7 +23,8 @@ def check_events(body):
                 body.is_moving_down = True
 
 
-def update_screen(pys_settings, screen, body):
+def update_screen(pys_settings, screen, body, apple):
     screen.fill(pys_settings.background_color)
     body.update()
+    apple.update()
     pygame.display.flip()
