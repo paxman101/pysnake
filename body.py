@@ -26,19 +26,34 @@ class Body:
 
     def move(self, x, y):
         """Moves the snake"""
-        for segment in self.body:
-            segment.centerx += x
-            segment.centery += y
+        oldx = self.body[0].centerx
+        oldy = self.body[0].centery
+        self.body[0].centerx += x
+        self.body[0].centery += y
+        for x in range(1, len(self.body)):
+            print(x)
+            tmpx = self.body[x].centerx
+            tmpy = self.body[x].centery
+            self.body[x].centerx = oldx
+            self.body[x].centery = oldy
+            oldx = tmpx
+            oldy = tmpy
+
 
     def update(self):
         """Updates location and draws self"""
         if self.is_moving_right:
-            self.move(1 * self.pys_settings.snake_speed[0], 0)
+            self.move(self.pys_settings.snake_speed[0], 0)
         if self.is_moving_left:
             self.move(-1 * self.pys_settings.snake_speed[0], 0)
         if self.is_moving_up:
             self.move(0, -1 * self.pys_settings.snake_speed[1])
         if self.is_moving_down:
-            self.move(0, 1 * self.pys_settings.snake_speed[1])
+            self.move(0, self.pys_settings.snake_speed[1])
 
         self.drawme()
+
+    def add_block(self):
+        self.body.append(pygame.Rect((self.body[len(self.body) - 2].centerx - 10,
+                                      (self.body[len(self.body) - 2].centery + 10),
+                         self.pys_settings.block_length, self.pys_settings.block_length)))

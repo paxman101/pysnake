@@ -10,8 +10,10 @@ pygame.init()
 pys_settings = Settings()
 screen = pygame.display.set_mode(pys_settings.screen_size)
 body = Body(pys_settings, screen)
-
+for i in range(0, 10):
+    body.add_block()
 # Main Game Loop
 while True:
     gf.check_events(body)
     gf.update_screen(pys_settings, screen, body)
+
