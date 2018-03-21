@@ -33,12 +33,12 @@ class Body:
     def update(self):
         """Updates location and draws self"""
         if self.is_moving_right:
-            self.move(1 * self.pys_settings.snake_speed[0] * self.pys_settings.block_length, 0)
+            self.move(1 * self.pys_settings.snake_speed[0], 0)
         if self.is_moving_left:
-            self.move(-1 * self.pys_settings.snake_speed[0] * self.pys_settings.block_length, 0)
+            self.move(-1 * self.pys_settings.snake_speed[0], 0)
         if self.is_moving_up:
-            self.move(0, -1 * self.pys_settings.snake_speed[1] * self.pys_settings.block_length)
+            self.move(0, -1 * self.pys_settings.snake_speed[1])
         if self.is_moving_down:
-            self.move(0, 1 * self.pys_settings.snake_speed[1] * self.pys_settings.block_length)
+            self.move(0, 1 * self.pys_settings.snake_speed[1])
 
         self.drawme()
