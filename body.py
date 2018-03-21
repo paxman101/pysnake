@@ -12,7 +12,6 @@ class Body:
                                   pys_settings.block_length, pys_settings.block_length))
         self.body.append(self.block)
         self.speed = pys_settings.snake_speed
-
         # Is moving in a direction booleans
         self.is_moving_right = False
         self.is_moving_left = False
@@ -28,32 +27,38 @@ class Body:
         """Moves the snake"""
         oldx = self.body[0].centerx
         oldy = self.body[0].centery
-        self.body[0].centerx += x
-        self.body[0].centery += y
-        for x in range(1, len(self.body)):
-            print(x)
-            tmpx = self.body[x].centerx
-            tmpy = self.body[x].centery
-            self.body[x].centerx = oldx
-            self.body[x].centery = oldy
-            oldx = tmpx
-            oldy = tmpy
+        collides = False
+        if len(self.body) > 1:
+            for i in range(1, len(self.body)):
+                if self.body[0].centerx + x == self.body[i].centerx:
+                    if self.body[0].centery + y == self.body[i].centery:
+                        collides = True
+        if not collides:
+            self.body[0].centerx += x
+            self.body[0].centery += y
+            for x in range(1, len(self.body)):
+                tmpx = self.body[x].centerx
+                tmpy = self.body[x].centery
+                self.body[x].centerx = oldx
+                self.body[x].centery = oldy
+                oldx = tmpx
+                oldy = tmpy
 
 
     def update(self):
         """Updates location and draws self"""
-        if self.is_moving_right:
+        if self.is_moving_right and self.body[0].right < self.pys_settings.screen_width:
             self.move(self.pys_settings.snake_speed[0], 0)
-        if self.is_moving_left:
+        if self.is_moving_left and self.body[0].left > 0:
             self.move(-1 * self.pys_settings.snake_speed[0], 0)
-        if self.is_moving_up:
+        if self.is_moving_up and self.body[0].top > 0:
             self.move(0, -1 * self.pys_settings.snake_speed[1])
-        if self.is_moving_down:
+        if self.is_moving_down and self.body[0].bottom < self.pys_settings.screen_height:
             self.move(0, self.pys_settings.snake_speed[1])
 
         self.drawme()
 
     def add_block(self):
-        self.body.append(pygame.Rect((self.body[len(self.body) - 2].centerx - 10,
-                                      (self.body[len(self.body) - 2].centery + 10),
+        self.body.append(pygame.Rect((self.body[len(self.body) - 2].centerx - (self.pys_settings.block_length / 2),
+                                      (self.body[len(self.body) - 2].centery + (self.pys_settings.block_length / 2)),
                          self.pys_settings.block_length, self.pys_settings.block_length)))
