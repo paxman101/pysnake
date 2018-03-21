@@ -62,3 +62,9 @@ class Body:
         self.body.append(pygame.Rect((self.body[len(self.body) - 2].centerx - (self.pys_settings.block_length / 2),
                                       (self.body[len(self.body) - 2].centery + (self.pys_settings.block_length / 2)),
                          self.pys_settings.block_length, self.pys_settings.block_length)))
+
+    def stop_moving(self):
+        self.is_moving_left = False
+        self.is_moving_right = False
+        self.is_moving_up = False
+        self.is_moving_down = False
