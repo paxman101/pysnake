@@ -11,11 +11,10 @@ pygame.init()
 pys_settings = Settings()
 screen = pygame.display.set_mode(pys_settings.screen_size)
 body = Body(pys_settings, screen)
-apple = Apple(pys_settings, screen)
-for i in range(0, 10):
-    body.add_block()
+apple = Apple(pys_settings, screen, body)
+body.add_block()
 # Main Game Loop
-apple.spawn(body)
+apple.spawn()
 while True:
     gf.check_events(body)
     gf.update_screen(pys_settings, screen, body, apple)

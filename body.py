@@ -1,5 +1,5 @@
 import pygame
-
+import sys
 
 class Body:
     def __init__(self, pys_settings, screen):
@@ -43,6 +43,9 @@ class Body:
                 self.body[x].centery = oldy
                 oldx = tmpx
                 oldy = tmpy
+        else:
+            self.body = []
+            self.body.append(self.block)
 
 
     def update(self):
