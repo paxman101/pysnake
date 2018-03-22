@@ -12,7 +12,6 @@ pys_settings = Settings()
 screen = pygame.display.set_mode(pys_settings.screen_size)
 body = Body(pys_settings, screen)
 apple = Apple(pys_settings, screen, body)
-body.add_block()
 # Main Game Loop
 apple.spawn()
 while True:
