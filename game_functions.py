@@ -27,4 +27,10 @@ def update_screen(pys_settings, screen, body, apple):
     screen.fill(pys_settings.background_color)
     body.update()
     apple.update()
+    score(pys_settings, screen, body)
     pygame.display.flip()
+
+def score(pys_settings, screen, body):
+    score_text = pys_settings.font.render("Length = " + str(len(body.body)), 1, (255, 255, 255))
+    screen.blit(score_text, score_text.get_rect())
+

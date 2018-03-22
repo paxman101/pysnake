@@ -1,3 +1,4 @@
+import pygame
 class Settings:
     def __init__(self):
         self.screen_width = 1200
@@ -8,3 +9,4 @@ class Settings:
         self.snake_speed = [self.block_length * 1, self.block_length * 1]
         self.snake_color = (255, 255, 255)
         self.apple_color = (255, 0, 0)
+        self.font = pygame.font.Font("Roboto-Black.ttf", 20)
