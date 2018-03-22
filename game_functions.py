@@ -10,17 +10,29 @@ def check_events(body):
 
         elif event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RIGHT:
-                body.stop_moving()
-                body.is_moving_right = True
+                if len(body.body) > 1 and body.is_moving_left:
+                    None
+                else:
+                    body.stop_moving()
+                    body.is_moving_right = True
             elif event.key == pygame.K_LEFT:
-                body.stop_moving()
-                body.is_moving_left = True
+                if len(body.body) > 1 and body.is_moving_right:
+                    None
+                else:
+                    body.stop_moving()
+                    body.is_moving_left = True
             elif event.key == pygame.K_UP:
-                body.stop_moving()
-                body.is_moving_up = True
+                if len(body.body) > 1 and body.is_moving_down:
+                    None
+                else:
+                    body.stop_moving()
+                    body.is_moving_up = True
             elif event.key == pygame.K_DOWN:
-                body.stop_moving()
-                body.is_moving_down = True
+                if len(body.body) > 1 and body.is_moving_up:
+                    None
+                else:
+                    body.stop_moving()
+                    body.is_moving_down = True
 
 
 def update_screen(pys_settings, screen, body, apple):
